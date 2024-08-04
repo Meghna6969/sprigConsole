@@ -1,0 +1,120 @@
+/*
+First time? Check out the tutorial game:
+https://sprig.hackclub.com/gallery/getting_started
+
+@title: SnakeSnack
+@author: Meghna Pichhika
+@tags: []
+@addedOn: 2024-00-00
+*/
+
+const player = "p"
+const body = "b"
+const background = "k"
+const wall ="w"
+const snack ="c"
+
+
+setLegend(
+  [ player, bitmap`
+................
+................
+................
+......759.......
+....3333333.....
+...333333333....
+..33333333333...
+..33222322233...
+..33202320233...
+..38333333383...
+..33333333333...
+..33033333033...
+...330000033....
+....3333333.....
+................
+................`],
+  [body,bitmap`
+................
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+.33333333333333.
+................`]
+  [background,bitmap`
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL`]
+  [wall,bitmap`
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000`]
+)
+
+setSolids([snack, bitmap`
+................
+................
+................
+.......0D.......
+.......0........
+.....99999......
+....9999999.....
+....9299999.....
+....9929999.....
+....9999999.....
+.....99999......
+................
+................
+................
+................
+................`
+])
+
+setMap(levels[level])
+
+setPushables({
+  [ player ]: []
+})
+
+onInput("s", () => {
+  getFirst(player).y += 1
+})
+
+afterInput(() => {
+  
+})
