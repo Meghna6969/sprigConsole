@@ -1,0 +1,159 @@
+/*
+First time? Check out the tutorial game:
+https://sprig.hackclub.com/gallery/getting_started
+
+@title: SnakeSnack
+@author: Meghna Pichhika
+@tags: []
+@addedOn: 2024-00-00
+*/
+
+const player = "p"
+const body = "b"
+const background = "k"
+const wall ="w"
+const snack ="c"
+
+
+setLegend(
+  [ player, bitmap`
+0000000000000000
+000033H973330000
+0003333333333000
+0033333333333300
+0333333333333330
+0333322332233330
+0333320330233330
+0333320330233330
+0338833333388330
+0333333333333330
+0333303333033330
+0333300000033330
+0033333333333300
+0003333333333000
+0000333333330000
+0000000000000000`],
+  [body,bitmap`
+0000000000000000
+0000000000000000
+0000333333330000
+0003333333333000
+0033333333333300
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0033333333333300
+0003333333333000
+0000333333330000
+0000000000000000`],
+  [background,bitmap`
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000`],
+  [wall,bitmap`
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL`],
+  [snack, bitmap`
+0000000000000000
+0000000L40000000
+0000000LD0000000
+0000000L00000000
+0000999999990000
+0009999999999000
+0099929999999900
+0099299999999900
+0099999999999900
+0099999999999900
+0099999999999900
+0099999999999900
+0099999999999900
+0009999999999000
+0000999999990000
+0000000000000000`
+]
+)
+
+setSolids([]);
+
+
+let level =0;
+const levels = [
+  map`
+wwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwww
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkpkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkckkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wwwwwwwwwwwwwwwwwwww`,
+  //17x17 grid of open space, not including walls
+];
+
+let score =0;
+addText("Score:" + score,
+   {x:6, 
+   y:1, 
+   color: color`2` })
+        
+
+
+
+
+
+
+setMap(levels[level])
+
+setPushables({
+  [ player ]: []
+})
+
+onInput("s", () => {
+  getFirst(player).y += 1
+})
+
+afterInput(() => {
+  
+})
