@@ -1,0 +1,187 @@
+/*
+@title: SnakeSnack
+@author: Meghna Pichhika
+@tags: []
+@addedOn: 2024-00-00
+*/
+
+const player = "p"
+const body = "b"
+const background = "k"
+const wall ="w"
+const snack ="c"
+const myTune = tune`
+1000,
+500: C5~500,
+14500`;
+
+
+
+setLegend(
+  [ player, bitmap`
+0000000000000000
+000033H973330000
+0003333333333000
+0033333333333300
+0333333333333330
+0333322332233330
+0333320330233330
+0333320330233330
+0338833333388330
+0333333333333330
+0333303333033330
+0333300000033330
+0033333333333300
+0003333333333000
+0000333333330000
+0000000000000000`],
+  [body,bitmap`
+0000000000000000
+0000000000000000
+0000333333330000
+0003333333333000
+0033333333333300
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0333333333333330
+0033333333333300
+0003333333333000
+0000333333330000
+0000000000000000`],
+  [background,bitmap`
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000`],
+  [wall,bitmap`
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLL`],
+  [snack, bitmap`
+0000000000000000
+0000000L40000000
+0000000LD0000000
+0000000L00000000
+0000999999990000
+0009999999999000
+0099929999999900
+0099299999999900
+0099999999999900
+0099999999999900
+0099999999999900
+0099999999999900
+0099999999999900
+0009999999999000
+0000999999990000
+0000000000000000`
+]
+)
+
+setBackground([background]);
+
+
+
+let level =0;
+const levels = [
+  map`
+wwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwww
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkpkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkckkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wkkkkkkkkkkkkkkkkkkw
+wwwwwwwwwwwwwwwwwwww`,
+];
+
+let score =0;
+addText("Score:" + score,
+   {x:6, 
+   y:1, 
+   color: color`2` })
+
+setSolids(["w"]);
+      
+
+// inputs for player movement control
+onInput("s", () => {
+  getFirst(player).y += 1;
+  playTune(myTune);// positive y is downwards
+});
+
+onInput("d", () => {
+  getFirst(player).x += 1;//right
+  playTune(myTune);
+});
+
+onInput("w",() => { 
+  getFirst(player).y -= 1;//up
+  playTune(myTune);
+});
+
+onInput("a",() => { 
+  getFirst(player).x -= 1;//left
+  playTune(myTune);
+});
+
+
+
+
+
+var mode = "easy";
+var reset = "l";
+
+
+setMap(levels[level])
+
+setPushables({
+  [ player ]: []
+})
+
+onInput("s", () => {
+  getFirst(player).y += 1
+})
+
+afterInput(() => {
+  
+})
