@@ -1,0 +1,1 @@
+Created a simple snake game inspired by the original snake game in nokia! I used javascript and drew my own characters, naming the game SNakeSnack! Gained a lot of experience using javascript.<img width="724" height="568" alt="IMG_4538" src="https://github.com/user-attachments/assets/003d40b1-c0fb-4186-8a85-cd182daa64fb" />
